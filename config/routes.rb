@@ -15,7 +15,7 @@ HealthLetter::Application.routes.draw do
   #   resources :products
   get 'patient', to: 'patients#show'
   resources :patients
-  root to: 'patient#index'
+  root to: 'patients#index'
   # Example resource route with options:
   #   resources :products do
   #     member do

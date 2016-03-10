@@ -9,7 +9,7 @@
 <%= @patient %> to my office.</p>
 <p><% if @pains.any? %><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %> is complaining of pain in <%= @pains.join(" , ") %><% if @pain_last != nil %> and <%= @pain_last %><% end %>.<% end %><% if @swellings.any? %><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %> has noticed swelling in <%= @swellings.join(", ") %><% if @swell_last != nil %>and <%= @swell_last %><% end %>.<% end %></p>
 
-<% if @pain_options != nil %>The symptons are worse <%= @pain_options.first %>.<% end %>
+<% if @pain_options.any? %>The symptons are worse <%= @pain_options.first %>.<% end %>
 
 <% if @morning_stiffness != nil %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %><% if @morning_stiffness == "Yes" %> has morning stiffness that can last for <%= @morning_stiffness_duration %>.<% end %><% if @morning_stiffness == "No" %> does not have morning stiffness.<% end %><% end %></p>
 
