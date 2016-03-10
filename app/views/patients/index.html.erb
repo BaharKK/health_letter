@@ -1,0 +1,138 @@
+<h1>Patients Form</h1>
+
+<div class="container">
+<%= form_tag 'patient', method: :get do %>
+<div class="form-group">
+<%= label_tag :name %>
+<%= text_field_tag :name, nil, :placeholder => "name", class: "form-control", id: "name" %>
+</div>
+<div class="form-group">
+<%= label_tag :Gender %>
+<%= select_tag :gender, "<option>Male</option><option>Female</option>".html_safe, class: "form-control", id: "name" %>
+</div>
+<div class="form-inline"> 
+<%= label_tag :main_complaint %>
+<%= text_field_tag :main_complaint , nil , placeholder: "main complaint", class: "form-control", :id => "form-control" %>
+</div>
+<div class="form-inline">
+<%= label_tag :since_how_long %>
+<%= text_field_tag :since_how_long , nil, :placeholder => "duration", :class => "form-control", :id => "form-control" %>
+</div>
+<div class="form-group">
+<p>Do you have <u>pain</u> in any of these joints?</p>
+<%= label_tag :Fingers %>
+<%= check_box_tag("pains[]","fingers",false, :class => "checkbox-inline") %>
+<%= label_tag :Wrists%>
+<%= check_box_tag("pains[]","wrists", false, :class => "checkbox-inline") %>
+<%= label_tag :Elbows %>
+<%= check_box_tag("pains[]", "elbows", false, :class => "checkbox-inline") %>
+<%= label_tag :Shoulders%>
+<%= check_box_tag("pains[]","shoulders", false, :class => "checkbox-inline")%>
+<%= label_tag :Hips %>
+<%= check_box_tag("pains[]","hips", false, :class => "checkbox-inline")%>
+<%= label_tag :Knees %>
+<%= check_box_tag("pains[]","knees", false, :class => "checkbox-inline")%>
+<%= label_tag :Ankles %>
+<%= check_box_tag("pains[]","ankles", false, :class => "checkbox-inline") %>
+<%= label_tag :Toes %>
+<%= check_box_tag("pains[]","toes", false, :class => "checkbox-inline") %>
+<%= label_tag :Back %>
+<%= check_box_tag("pains[]","back", false, :class => "checkbox-inline") %>
+<%= label_tag :Neck %>
+<%= check_box_tag("pains[]","neck", false, :class => "checkbox-inline") %>
+</div>
+
+<div class="form-group">
+<p>Do you have <u>swelling</u> in any of these joints?</p>
+<%= label_tag :Fingers %>
+<%= check_box_tag("swellings[]","fingers", false, :class => "checkbox-inline") %>
+<%= label_tag :Wrists%>
+<%= check_box_tag("swellings[]","wrists", false, :class => "checkbox-inline") %>
+<%= label_tag :Elbows %>
+<%= check_box_tag("swellings[]","elbows", false, :class => "checkbox-inline") %>
+<%= label_tag :Shoulders%>
+<%= check_box_tag("swellings[]", "shoulders", false, :class => "checkbox-inline") %>
+<%= label_tag :Hips %>
+<%= check_box_tag("swellings[]", "hips", false, :class => "checkbox-inline") %>
+<%= label_tag :Knees %>
+<%= check_box_tag("swellings[]", "knees", false, :class => "checkbox-inline") %>
+<%= label_tag :Ankles %>
+<%= check_box_tag("swellings[]", "ankles", false, :class => "checkbox-inline") %>
+<%= label_tag :Toes %>
+<%= check_box_tag("swellings[]", "toes", false, :class => "checkbox-inline") %>
+<%= label_tag :Back %>
+<%= check_box_tag("swellings[]", "back", false, :class => "checkbox-inline") %>
+<%= label_tag :Neck %>
+<%= check_box_tag("swellings[]", "neck", false, :class => "checkbox-inline") %>
+</div>
+
+<div class="form-group">
+<p>Are the Symptons worse after activity or after rest?</p>
+<%= label_tag :After_Activity %>
+<%= check_box_tag("options[]", "after activity", false, :class => "checkbox-inline") %> 
+<%= label_tag :After_Rest %>
+<%= check_box_tag("options[]", "after rest", false, :class => "checkbox-inline") %>
+<%= label_tag :Both %>
+<%= check_box_tag("options[]", "after both activity and rest", false, :class => "checkbox-inline") %>
+</div>
+
+
+<div class="form-group">
+<p>Do you suffer from stiffness in the joints/muscles in the morning?</p> 
+<%= label_tag :Yes %>
+<%= check_box_tag :morning_stiffness, "Yes", false, :class => "checkbox-inline" %> 
+<%= label_tag :No %>
+<%= check_box_tag :morning_stiffness, "No", false, :class => "checkbox-inline" %>
+</div>
+<div class="form-group">
+<p><u>If yes, for how many minutes in the morning?</u></p>
+<%= text_field_tag :morning_stiffness_duration, nil, :placeholder => "stiffness duration", class: "form-control" %>
+</div>
+<p><u>Do you have/had any of the follwoing problems</u></p>
+<div class="checkbox">
+<%= check_box_tag("disease[]", "Psoriasis", false, :class => "checkbox")%>
+<%= label_tag :Psoriasis_of_skin? %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("disease[]", "inflammatary bowel disease", false, :class => "checkbox")%>
+<%= label_tag "Crohn's disease or Ulcerative colitis?" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("disease[]", "hair loss", false, :class => "checkbox") %>
+<%= label_tag "Hair loss?" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("disease[]", "dry eyes or dry mouth", false, :class => "checkbox") %>
+<%= label_tag "Dry eyes or Dry mouth" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("disease[]", "kidney problems", false, :class => "checkbox")%>
+<%= label_tag "Kidney Problems" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("disease[]","Raynaud's", false, :class => "checkbox")%>
+<%= label_tag "Raynaud's (fingers becoming white and purple in cold weather)" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("disease[]", "rash on face or rash when exposed to sun light", false, :class => "checkbox" )%>
+<%= label_tag "Rash on face? Rash when exposed to sun light?" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("disease[]","recurrent mouth ulcers", false, :class => "checkbox") %>
+<%= label_tag "Recurrent mouth ulcers?" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("disease[]", "blood clots in legs or lungs", false, :class => "checkbox") %>
+<%= label_tag "Blood clots in leg or lungs" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("disease[]", "shortness of breath or unexplained chest pain", false, :class => "checkbox") %>
+<%= label_tag "Shortness of breath/unexplained chest pain" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("disease[]", "painfull red eyes (uveitis or Iritis)", false, :class => "checkbox") %>
+<%= label_tag "Painfull and red eyes (uveitis or Iritis)" %>
+</div>
+<%= submit_tag 'Submit' %>
+<% end %>
+</div>

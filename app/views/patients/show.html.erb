@@ -1,0 +1,28 @@
+<br>
+<div class="container">
+<%= link_to "<button>Back to form</button>".html_safe, patients_path %>
+<h1>Patient <%= @patient %></h1>
+
+<p>Main Complaint: <%= @main_complaint %></p>
+<p>Duration: <%= @since_how_long %> </p>
+<p>Thank you for reffering <% if @gender == "Male" %> Mr <% end %><% if @gender == "Female" %> Ms <% end %>
+<%= @patient %> to my office.</p>
+<p><% if @pains.any? %><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %> is complaining of pain in <%= @pains.join(" , ") %><% if @pain_last != nil %> and <%= @pain_last %><% end %>.<% end %><% if @swellings.any? %><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %> has noticed swelling in <%= @swellings.join(", ") %><% if @swell_last != nil %>and <%= @swell_last %><% end %>.<% end %></p>
+
+<% if @pain_options != nil %>The symptons are worse <%= @pain_options.first %>.<% end %>
+
+<% if @morning_stiffness != nil %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %><% if @morning_stiffness == "Yes" %> has morning stiffness that can last for <%= @morning_stiffness_duration %>.<% end %><% if @morning_stiffness == "No" %> does not have morning stiffness.<% end %><% end %></p>
+
+<% if @diseases.any? %><p>There is history of <%= @diseases.join(", ") %><% if @diseases_last != nil %> and <%= @diseases_last %><%end%>.<% end %>
+<% if @non_diseases.any? %><p> There is no history of <%= @non_diseases.join(", ") %><% if @non_diseases_last != nil %> or <%= @non_diseases_last %><%end%>.<% end %><hr>
+
+
+
+
+Dr Satish Rachapalli MBBS, MSc, MRCP (UK)<br>
+Consultant Rheumatologist<br>
+Vancouver Island Health Authority<br>
+Tel: 250-5194007<br>
+Fax: 250-5987138<br>
+
+</div>
