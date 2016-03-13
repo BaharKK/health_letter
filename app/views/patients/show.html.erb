@@ -3,26 +3,119 @@
 <%= link_to "<button>Back to form</button>".html_safe, patients_path %>
 <h1>Patient <%= @patient %></h1>
 
-<p>Main Complaint: <%= @main_complaint %></p>
-<p>Duration: <%= @since_how_long %> </p>
-<p>Thank you for reffering <% if @gender == "Male" %> Mr <% end %><% if @gender == "Female" %> Ms <% end %>
+<p><strong>Main Complaint: <%= @main_complaint %></p></strong>
+<p><strong>Duration: <%= @since_how_long %> </p></strong>
+<p>Thank you for referring <% if @gender == "Male" %> Mr <% end %><% if @gender == "Female" %> Ms <% end %>
 <%= @patient %> to my office.</p>
-<p><% if @pains.any? %><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %> is complaining of pain in <%= @pains.join(" , ") %><% if @pain_last != nil %> and <%= @pain_last %><% end %>.<% end %><% if @swellings.any? %><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %> has noticed swelling in <%= @swellings.join(", ") %><% if @swell_last != nil %>and <%= @swell_last %><% end %>.<% end %></p>
-
+<% if @pains.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %> is complaining of pain in <%= @pains.join(" , ") %><% if @pain_last != nil %> and <%= @pain_last %><% end %>.<% end %>
+<% if @swellings.any? %><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %> has noticed swelling in <%= @swellings.join(", ") %><% if @swell_last != nil %>and <%= @swell_last %><% end %>.<% end %>
 <% if @pain_options.any? %>The symptons are worse <%= @pain_options.first %>.<% end %>
-
-<% if @morning_stiffness != nil %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %><% if @morning_stiffness == "Yes" %> has morning stiffness that can last for <%= @morning_stiffness_duration %>.<% end %><% if @morning_stiffness == "No" %> does not have morning stiffness.<% end %><% end %></p>
-
-<% if @diseases.any? %><p>There is history of <%= @diseases.join(", ") %><% if @diseases_last != nil %> and <%= @diseases_last %><%end%>.<% end %>
-<% if @non_diseases.any? %><p> There is no history of <%= @non_diseases.join(", ") %><% if @non_diseases_last != nil %> or <%= @non_diseases_last %><%end%>.<% end %><hr>
-
+<% if @morning_stiffness != nil %><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %><% if @morning_stiffness == "Yes" %> has morning stiffness that can last for <%= @morning_stiffness_duration %> minutes.<% end %><% if @morning_stiffness == "No" %> does not have morning stiffness.<% end %></p><% end %>
+<p><%= @additional_details %></p>
+<% if @diseases.any? %><p>There is history of <%= @diseases.join(" , ") %><% if @diseases_last != nil %> and <%= @diseases_last %><%end%>.<% end %>
+<% if @non_diseases.any? %><p> There is no history of <%= @non_diseases.join(", ") %><% if @non_diseases_last != nil %> or <%= @non_diseases_last %><%end%>.<% end %>
 
 
 
-Dr Satish Rachapalli MBBS, MSc, MRCP (UK)<br>
-Consultant Rheumatologist<br>
-Vancouver Island Health Authority<br>
-Tel: 250-5194007<br>
-Fax: 250-5987138<br>
 
+<% if @vasculitis_full %> 
+<% if @vasculitis.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>
+has vasculitis symptoms like <%= @vasculitis.join(", ") %><% if @vasculitis_last != nil %> and <%= @vasculitis_last%><% end %><% end %>
+<% elsif @vasculitis.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>
+has <%= @vasculitis.join(", ") %><% if @vasculitis_last != nil %> and <%= @vasculitis_last%><% end %>
+<% if @non_vasculitis.any? %> but no other vasculitis symptoms like <%= @non_vasculitis.join(", ")%><% if @non_vasculitis_last != nil %> or
+<%= @non_vasculitis_last %><% end %><% end %>.</p><% else %> 
+<p><% if @non_vasculitis.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>has no vasculitis symptons like <%= @non_vasculitis.join(", ")%>
+<% if @non_vasculitis_last != nil %> or
+<%= @non_vasculitis_last %><% end %><% end %>.</p><% end %>
+
+
+
+
+
+<% if @myositis_full %>
+<% if @myositis.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>
+has myositis symptoms like <%= @myositis.join(", ")%><% if @myositis_last != nil %> and <%= @myositis_last %><% end %><% end %>
+<% elsif @myositis.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>
+has <%= @myositis.join(", ")%><% if @myositis_last != nil %> and <%= @myositis_last %><% end %>
+<% if @non_myositis.any? %> but no other myositis symptoms like <%= @non_myositis.join(", ")%><% if @non_myositis_last != nil %> or
+<%= @non_myositis_last %><% end %><% end %>.</p><% else %>
+<% if @non_myositis.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>has no myositis symptoms like <%= @non_myositis.join(", ")%>
+<% if @non_myositis_last != nil %> or
+<%= @non_myositis_last %><% end %><% end %>.</p><% end %>
+
+
+
+<% if @fibromyalgia_full %>
+<% if @fibromyalgia.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>
+has fibromyalgia symptoms like <%= @fibromyalgia.join(", ")%><% if @fibromyalgia_last != nil %> and <%= @fibromyalgia_last %><% end %>.</p><% end %>
+<% elsif @fibromyalgia.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>
+has <%= @fibromyalgia.join(", ")%><% if @fibromyalgia_last != nil %> and <%= @fibromyalgia_last %><% end %>
+<% if @non_fibromyalgia.any? %> but no other fibromyalgia symptoms like <%= @non_fibromyalgia.join(", ")%><% if @non_fibromyalgia_last != nil %> or
+<%= @non_fibromyalgia_last %><% end %><% end %>.</p><% else %>
+<% if @non_fibromyalgia.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>has no fibromyalgia symptons like <%= @non_fibromyalgia.join(", ")%>
+<% if @non_fibromyalgia_last != nil %> or
+<%= @non_fibromyalgia_last %><% end %><% end %>.</p><% end %>
+
+<strong>Social History</strong>
+<p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>is a <%= @occupation %>.
+<% if @smoke != nil %>
+<% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %><%= @smoke %> <%= @smoke_detail %> cigarettes per day.
+<% else %>
+<% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>does not smoke.
+<% end %>
+
+<% if @alcohol != nil %>
+<% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>consumes <%= @alcohol %> <%= @alcohol_detail %> per day.
+<% else %>
+<% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>does not consume alcohol.
+<% end %>
+
+<% if @drugs != nil %>
+<% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>admits using <%= @drugs %><% if @drug_detail != "" %> (<%= @drug_detail %>)<% end %>.
+<% else %>
+<% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>does not use recreational drugs.
+<% end %></p>
+
+<strong>Family History</strong>
+<% if @family_full %>
+<p>There is family history of <%= @family.join(", ") %><% if @family_last != nil %> and <%= @family_last %><%end%>. <%= @family_details %></p>
+
+<% elsif @family.any? %>
+<p>There is family history of <%= @family.join(", ") %><% if @family_last != nil %> and <%= @family_last %><%end%>.<%= @family_details %></p>
+<% else %>
+<p>There is no family history of <%= @non_family.join(", ") %><% if @non_family_last != nil %> and <%= @non_family_last %><%end%>.<%= @family_details %></p>
+<% end %>
+
+
+
+
+
+<strong>Examination</strong>
+<% if @examination_full %>
+<p>There is <%= @examination.join(", ")%> and <%= @examination_last %>.
+<% elsif @examination.any? %><p>There is <%= @examination.join(", ")%><% if @examination_last != nil %> and <%= @examination_last %><% end %>
+<% if @non_examination.any? %> and no <%= @non_examination.join(", ")%><% if @non_examination_last != nil %> or
+<%= @non_examination_last %><% end %><% end %>.</p><% else %>
+<p>There is no <%= @non_examination.join(", ")%><% if @non_examination_last != nil %> or
+<%= @non_examination_last %><% end %>.</p>
+<% end %>
+
+<p><% @swelling_examination.each_with_index do |symptom, index| %>
+<% if symptom != "" && if @symptom_list.include?(symptom)%>
+There is swelling of <%= symptom %> joint
+<% if @swelling_examination[index+1] == "" %>.<% end %>
+<% elsif @swelling_examination[index-1] != "" %>
+(<%= symptom %>).
+<% else %>
+<%= symptom %>.
+<% end %>
+<% end %>
+<% end %>
+
+<% if @spine_examination != "" %>
+<%= @spine_examination %>
+<% else %>
+<p>Spine examination is normal.</p>
+<% end %></p>
 </div>

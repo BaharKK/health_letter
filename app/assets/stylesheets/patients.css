@@ -11,3 +11,34 @@ div.form-group .checkbox-inline {
 div.checkbox .checkbox {
   transform: scale(1.5);
 }
+
+h1 {
+  text-align: center;
+  color: #800517;
+  font-family:"Book Antiqua";
+}
+
+#submit_button {
+  margin: auto;
+  display:block;
+  width: 400px;
+  
+}
+#labels {
+  margin-right: 5px;
+}
+#detail_box {
+  text-align: left;
+}
+.form-group #detail_box_2 {
+  width: 400px;
+  display: inline-block;
+  margin-left: 15%;
+  margin-right: 85%;
+}
+
+#labels_2 {
+  margin-top: 30px;
+  display: inline-block;
+  position: absolute;
+}

@@ -1,4 +1,4 @@
-<h1>Patients Form</h1>
+<h1>Dr Satish Rachapalli</h1>
 
 <div class="container">
 <%= form_tag 'patient', method: :get do %>
@@ -44,25 +44,25 @@
 
 <div class="form-group">
 <p>Do you have <u>swelling</u> in any of these joints?</p>
-<%= label_tag :Fingers %>
+<%= label_tag :Fingers, "Fingers", :id => "labels" %>
 <%= check_box_tag("swellings[]","fingers", false, :class => "checkbox-inline") %>
-<%= label_tag :Wrists%>
+<%= label_tag :Wrists ,"Wrists", :id => "labels"%>
 <%= check_box_tag("swellings[]","wrists", false, :class => "checkbox-inline") %>
-<%= label_tag :Elbows %>
+<%= label_tag :Elbows , "Elbows", :id => "labels" %>
 <%= check_box_tag("swellings[]","elbows", false, :class => "checkbox-inline") %>
-<%= label_tag :Shoulders%>
+<%= label_tag :Shoulders , "Shoulders", :id => "labels"%>
 <%= check_box_tag("swellings[]", "shoulders", false, :class => "checkbox-inline") %>
-<%= label_tag :Hips %>
+<%= label_tag :Hips , "Hips", :id => "labels" %>
 <%= check_box_tag("swellings[]", "hips", false, :class => "checkbox-inline") %>
-<%= label_tag :Knees %>
+<%= label_tag :Knees , "Knees", :id => "labels" %>
 <%= check_box_tag("swellings[]", "knees", false, :class => "checkbox-inline") %>
-<%= label_tag :Ankles %>
+<%= label_tag :Ankles, "Ankles", :id => "labels"%>
 <%= check_box_tag("swellings[]", "ankles", false, :class => "checkbox-inline") %>
-<%= label_tag :Toes %>
+<%= label_tag :Toes, "Toes", :id => "labels" %>
 <%= check_box_tag("swellings[]", "toes", false, :class => "checkbox-inline") %>
-<%= label_tag :Back %>
+<%= label_tag :Back, "Back", :id => "labels" %>
 <%= check_box_tag("swellings[]", "back", false, :class => "checkbox-inline") %>
-<%= label_tag :Neck %>
+<%= label_tag :Neck, "Neck", :id => "labels" %>
 <%= check_box_tag("swellings[]", "neck", false, :class => "checkbox-inline") %>
 </div>
 
@@ -88,13 +88,16 @@
 <p><u>If yes, for how many minutes in the morning?</u></p>
 <%= text_field_tag :morning_stiffness_duration, nil, :placeholder => "stiffness duration", class: "form-control" %>
 </div>
-<p><u>Do you have/had any of the follwoing problems</u></p>
+<div class="form-group">
+<%= text_area_tag :additional_details,nil, :placeholder => "additional details", size: "40x7", id: "detail_box", class: "form-control" %>
+</div>
+<p><u>Do you have/had any of the following problems</u></p>
 <div class="checkbox">
 <%= check_box_tag("disease[]", "Psoriasis", false, :class => "checkbox")%>
 <%= label_tag :Psoriasis_of_skin? %>
 </div>
 <div class="checkbox">
-<%= check_box_tag("disease[]", "inflammatary bowel disease", false, :class => "checkbox")%>
+<%= check_box_tag("disease[]", "inflammatory bowel disease", false, :class => "checkbox")%>
 <%= label_tag "Crohn's disease or Ulcerative colitis?" %>
 </div>
 <div class="checkbox">
@@ -102,37 +105,226 @@
 <%= label_tag "Hair loss?" %>
 </div>
 <div class="checkbox">
-<%= check_box_tag("disease[]", "dry eyes or dry mouth", false, :class => "checkbox") %>
-<%= label_tag "Dry eyes or Dry mouth" %>
+<%= check_box_tag("disease[]", "sicca symptoms", false, :class => "checkbox") %>
+<%= label_tag "Sicca Symptoms" %>
 </div>
 <div class="checkbox">
-<%= check_box_tag("disease[]", "kidney problems", false, :class => "checkbox")%>
-<%= label_tag "Kidney Problems" %>
+<%= check_box_tag("disease[]", "renal disease", false, :class => "checkbox")%>
+<%= label_tag "Renal Disease" %>
 </div>
 <div class="checkbox">
-<%= check_box_tag("disease[]","Raynaud's", false, :class => "checkbox")%>
-<%= label_tag "Raynaud's (fingers becoming white and purple in cold weather)" %>
+<%= check_box_tag("disease[]","raynaud's", false, :class => "checkbox")%>
+<%= label_tag "Raynaud's" %>
 </div>
 <div class="checkbox">
-<%= check_box_tag("disease[]", "rash on face or rash when exposed to sun light", false, :class => "checkbox" )%>
-<%= label_tag "Rash on face? Rash when exposed to sun light?" %>
+<%= check_box_tag("disease[]", "malar rash or photo sensitivity", false, :class => "checkbox" )%>
+<%= label_tag "Malar Rash or Photo Sensitivity?" %>
 </div>
 <div class="checkbox">
 <%= check_box_tag("disease[]","recurrent mouth ulcers", false, :class => "checkbox") %>
 <%= label_tag "Recurrent mouth ulcers?" %>
 </div>
 <div class="checkbox">
-<%= check_box_tag("disease[]", "blood clots in legs or lungs", false, :class => "checkbox") %>
-<%= label_tag "Blood clots in leg or lungs" %>
+<%= check_box_tag("disease[]", "DVT or PE", false, :class => "checkbox") %>
+<%= label_tag :DVT_or_PE, "DVT or PE" %>
 </div>
 <div class="checkbox">
-<%= check_box_tag("disease[]", "shortness of breath or unexplained chest pain", false, :class => "checkbox") %>
+<%= check_box_tag("disease[]","shortness of breath or unexplained chest pain", false, :class => "checkbox") %>
 <%= label_tag "Shortness of breath/unexplained chest pain" %>
 </div>
 <div class="checkbox">
-<%= check_box_tag("disease[]", "painfull red eyes (uveitis or Iritis)", false, :class => "checkbox") %>
-<%= label_tag "Painfull and red eyes (uveitis or Iritis)" %>
+<%= check_box_tag("disease[]","iritis", false, :class => "checkbox") %>
+<%= label_tag "Iritis" %>
 </div>
-<%= submit_tag 'Submit' %>
+<hr>
+<p><strong><u>Vasculitis</u> Symptoms:</strong></p>
+<div class="checkbox">
+<%= check_box_tag("vasculitis[]","bronchial asthma", false, :class => "checkbox") %><%= label_tag "Bronchial asthma" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("vasculitis[]","increased eosinophil count", false, :class => "checkbox") %><%= label_tag "Increased eosinophil count" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("vasculitis[]","nose bleeds", false, :class => "checkbox") %><%= label_tag "Nose bleeds" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("vasculitis[]","paresthesia", false, :class => "checkbox") %><%= label_tag "Paresthesia" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("vasculitis[]","sinusitis", false, :class => "checkbox") %><%= label_tag "Sinusitis" %>
+</div>
+<hr>
+<p><strong><u>Myositis</u> Symptoms:</strong></p>
+<div class="checkbox">
+<%= check_box_tag("myositis[]","weakness", false, :class => "checkbox") %><%= label_tag "Weakness" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("myositis[]","dysphagia", false, :class => "checkbox") %><%= label_tag "Dysphagia" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("myositis[]","dysphonia", false, :class => "checkbox") %><%= label_tag "Dysphonia" %>
+</div>
+<hr>
+<p><strong><u>Fibromyalgia</u> Symptoms:</strong></p>
+<div class="checkbox">
+<%= check_box_tag("fibromyalgia[]","non restorative sleep", false, :class => "checkbox") %><%= label_tag "Non restorative sleep" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("fibromyalgia[]","excessive fatigue", false, :class => "checkbox") %><%= label_tag "Excessive fatigue" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("fibromyalgia[]","wide spread pain", false, :class => "checkbox") %><%= label_tag "Wide spread pain" %>
+</div>
+<div class="checkbox">
+<%= check_box_tag("fibromyalgia[]","IBS", false, :class => "checkbox") %><%= label_tag "IBS" %>
+</div>
+<hr>
+
+<div class="form-group">
+<p><strong><u>Social History</u></strong></p>
+<div id="labels_2">  
+<%= label_tag :Smoker,"Smoker", :id => "labels" %>
+<%= check_box_tag :smokes ,"smokes", false, :class => "checkbox-inline" %>
+</div>
+<%= text_area_tag("smoke_detail",nil, :placeholder => "additional details", size: "1x3", id: "detail_box_2", class: "form-control")%>
+<br>
+
+<div id="labels_2">  
+<%= label_tag :Alcohol,"Alcohol", :id => "labels" %>
+<%= check_box_tag :alcohol ,"alcohol", false, :class => "checkbox-inline" %>
+</div>
+<%= text_area_tag("alcohol_detail",nil, :placeholder => "additional details", size: "1x3", id: "detail_box_2", class: "form-control")%>
+<br>
+
+<div id="labels_2">  
+<%= label_tag :Recreational_drugs,"Recreational Drugs", :id => "labels" %>
+<%= check_box_tag :drugs ,"recreational drugs", false, :class => "checkbox-inline" %>
+</div>
+<%= text_area_tag("drug_detail",nil, :placeholder => "additional details", size: "1x3", id: "detail_box_2", class: "form-control")%>
+<br>
+
+<div class="form-group">
+<%= text_area_tag :occupation, nil, :placeholder => "Occupation", size: "40x3", id: "detail_box_2", class: "form-control" %>
+</div>
+</div>
+
+<div class="form-group">
+<p><strong><u>Family History</u></strong></p>
+<%= label_tag :SLE, "SLE", :id => "labels" %>
+<%= check_box_tag("family[]","SLE", false, :class => "checkbox-inline") %>
+<%= label_tag :Osteoarthritis ,"Osteoarthritis", :id => "labels"%>
+<%= check_box_tag("family[]","osteoarthritis", false, :class => "checkbox-inline") %>
+<%= label_tag :Rheumatoid_arthritis , "Rheumatoid Arthritis", :id => "labels" %>
+<%= check_box_tag("family[]","rheumatoid arthritis", false, :class => "checkbox-inline") %>
+<%= label_tag :Psoriasis , "Psoriasis", :id => "labels"%>
+<%= check_box_tag("family[]", "Psoriasis", false, :class => "checkbox-inline") %>
+<%= label_tag :IBD , "IBD", :id => "labels" %>
+<%= check_box_tag("family[]", "IBD", false, :class => "checkbox-inline") %>
+<%= label_tag :Uveitis , "Uveitis", :id => "labels" %>
+<%= check_box_tag("family[]", "uveitis", false, :class => "checkbox-inline") %>
+</div>
+<div class="form-group">
+<%= text_area_tag :family_details ,nil, :placeholder => "additional details", size: "40x7", id: "detail_box", class: "form-control" %>
+</div>
+
+<h1>Examination</h1>
+<div class="form-group">
+<%= label_tag :Rash, "Rash", :id => "labels" %>
+<%= check_box_tag("examination[]","rash", false, :class => "checkbox-inline") %>
+<%= label_tag :Lymphadenopathy ,"Lymphadenopathy", :id => "labels"%>
+<%= check_box_tag("examination[]","lymphadenopathy", false, :class => "checkbox-inline") %>
+<%= label_tag :Sclerodacty , "Sclerodactyly", :id => "labels" %>
+<%= check_box_tag("examination[]","sclerodactyly", false, :class => "checkbox-inline") %>
+<%= label_tag :Tophi , "Tophi", :id => "labels"%>
+<%= check_box_tag("examination[]", "tophi", false, :class => "checkbox-inline") %>
+</div>
+<p><strong><u>Swelling Of Joints</u></strong></p>
+<div class="form-group">
+    
+<div id="labels_2">  
+<%= label_tag :MCP,"MCP", :id => "labels" %>
+<%= check_box_tag("swelling_examination[]","MCP", false, :class => "checkbox-inline") %>
+</div>
+<%= text_area_tag("swelling_examination[]",nil, :placeholder => "additional details", size: "1x3", id: "detail_box_2", class: "form-control")%>
+<br>
+
+<div id="labels_2"> 
+<%= label_tag :PIP ,"PIP", :id => "labels"%>
+<%= check_box_tag("swelling_examination[]","PIP", false, :class => "checkbox-inline") %>
+</div>
+<%= text_area_tag("swelling_examination[]", nil, :placeholder => "additional details", size: "1x3", id: "detail_box_2", class: "form-control") %>
+<br>
+
+<div id="labels_2">
+<%= label_tag :DIP ,"DIP", :id => "labels" %>
+<%= check_box_tag("swelling_examination[]","DIP", false, :class => "checkbox-inline") %>
+</div>
+<%= text_area_tag("swelling_examination[]",nil, :placeholder => "additional details", size: "1x3", id: "detail_box_2", class: "form-control") %>
+<br>
+
+<div id="labels_2">
+<%= label_tag :CMC ,"1st CMC", :id => "labels" %>
+<%= check_box_tag("swelling_examination[]","1st CMC", false, :class => "checkbox-inline") %>
+</div>
+<%= text_area_tag("swelling_examination[]",nil, :placeholder => "additional details", size: "1x3", id: "detail_box_2", class: "form-control") %>
+<br>
+
+<div id="labels_2">
+<%= label_tag :Wrist,"Wrist", :id => "labels"%>
+<%= check_box_tag("swelling_examination[]","wrist", false, :class => "checkbox-inline") %>
+</div>
+<%= text_area_tag("swelling_examination[]",nil, :placeholder => "additional details", size: "1x3", id: "detail_box_2", class: "form-control") %>
+<br>
+
+<div id="labels_2">
+<%= label_tag :Elbow , "Elbow", :id => "labels" %>
+<%= check_box_tag("swelling_examination[]","elbow", false, :class => "checkbox-inline") %>
+</div>
+<%= text_area_tag("swelling_examination[]", nil, :placeholder => "additional details", size: "1x3", id: "detail_box_2", class: "form-control") %>
+<br>
+
+<div id="labels_2">
+<%= label_tag :Shoulder , "Shoulder", :id => "labels"%>
+<%= check_box_tag("swelling_examination[]", "shoulder", false, :class => "checkbox-inline") %>
+</div>
+<%= text_area_tag("swelling_examination[]",nil, :placeholder => "additional details", size: "1x3", id: "detail_box_2", class: "form-control") %>
+<br>
+
+<div id="labels_2">
+<%= label_tag :Hip , "Hips", :id => "labels" %>
+<%= check_box_tag("swelling_examination[]","hip", false, :class => "checkbox-inline") %>
+</div>
+<%= text_area_tag("swelling_examination[]", nil, :placeholder => "additional details", size: "1x3", id: "detail_box_2", class: "form-control") %>
+<br>
+
+<div id="labels_2">
+<%= label_tag :Knees , "Knees", :id => "labels"%>
+<%= check_box_tag("swelling_examination[]", "knee", false, :class => "checkbox-inline") %>
+</div>
+<%= text_area_tag("swelling_examination[]",nil, :placeholder => "additional details", size: "1x3", id: "detail_box_2", class: "form-control") %>
+<br>
+
+<div id="labels_2">
+<%= label_tag :Ankles , "Ankles", :id => "labels" %>
+<%= check_box_tag("swelling_examination[]","ankle", false, :class => "checkbox-inline") %>
+</div>
+<%= text_area_tag("swelling_examination[]",nil, :placeholder => "additional details", size: "1x3", id: "detail_box_2", class: "form-control") %>
+<br> 
+
+<div id="labels_2">
+<%= label_tag :MTP , "MTP", :id => "labels"%>
+<%= check_box_tag("swelling_examination[]", "MTP", false, :class => "checkbox-inline") %>
+</div>
+<%= text_area_tag("swelling_examination[]", nil, :placeholder => "additional details", size: "1x3", id: "detail_box_2", class: "form-control") %>
+<br>
+
+<div class="form-group">
+<%= text_area_tag :spine_examination,nil, :placeholder => "Spine Examination", size: "40x3", id: "detail_box_2", class: "form-control" %>
+</div>
+
+
+<%= submit_tag 'Submit', :class => "btn btn-default", :id => "submit_button" %>
+<br>
+<br>
 <% end %>
 </div>
