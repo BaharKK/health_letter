@@ -3,13 +3,13 @@
 <%= link_to "<button>Back to form</button>".html_safe, patients_path %>
 <h1>Patient <%= @patient %></h1>
 
-<p><strong>Main Complaint: <%= @main_complaint %></p></strong>
-<p><strong>Duration: <%= @since_how_long %> </p></strong>
+<p><strong>Main Complaint: </strong><%= @main_complaint %></p>
+<p><strong>Duration: </strong><%= @since_how_long %> </p>
 <p>Thank you for referring <% if @gender == "Male" %> Mr <% end %><% if @gender == "Female" %> Ms <% end %>
 <%= @patient %> to my office.</p>
-<% if @pains.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %> is complaining of pain in <%= @pains.join(" , ") %><% if @pain_last != nil %> and <%= @pain_last %><% end %>.<% end %>
-<% if @swellings.any? %><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %> has noticed swelling in <%= @swellings.join(", ") %><% if @swell_last != nil %>and <%= @swell_last %><% end %>.<% end %>
-<% if @pain_options.any? %>The symptons are worse <%= @pain_options.first %>.<% end %>
+<% if @pains.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %> is complaining of pain in <%= @pains.join(", ") %><% if @pain_last != nil %> and <%= @pain_last %><% end %>.<% end %>
+<% if @swellings.any? %><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %> has noticed swelling in <%= @swellings.join(", ") %><% if @swell_last != nil %> and <%= @swell_last %><% end %>.<% end %>
+<% if @pain_options.any? %>The symptoms are worse <%= @pain_options.first %>.<% end %>
 <% if @morning_stiffness != nil %><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %><% if @morning_stiffness == "Yes" %> has morning stiffness that can last for <%= @morning_stiffness_duration %> minutes.<% end %><% if @morning_stiffness == "No" %> does not have morning stiffness.<% end %></p><% end %>
 <p><%= @additional_details %></p>
 <% if @diseases.any? %><p>There is history of <%= @diseases.join(" , ") %><% if @diseases_last != nil %> and <%= @diseases_last %><%end%>.<% end %>
@@ -25,7 +25,7 @@ has vasculitis symptoms like <%= @vasculitis.join(", ") %><% if @vasculitis_last
 has <%= @vasculitis.join(", ") %><% if @vasculitis_last != nil %> and <%= @vasculitis_last%><% end %>
 <% if @non_vasculitis.any? %> but no other vasculitis symptoms like <%= @non_vasculitis.join(", ")%><% if @non_vasculitis_last != nil %> or
 <%= @non_vasculitis_last %><% end %><% end %>.</p><% else %> 
-<p><% if @non_vasculitis.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>has no vasculitis symptons like <%= @non_vasculitis.join(", ")%>
+<p><% if @non_vasculitis.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>has no vasculitis symptoms like <%= @non_vasculitis.join(", ")%>
 <% if @non_vasculitis_last != nil %> or
 <%= @non_vasculitis_last %><% end %><% end %>.</p><% end %>
 
@@ -53,12 +53,17 @@ has fibromyalgia symptoms like <%= @fibromyalgia.join(", ")%><% if @fibromyalgia
 has <%= @fibromyalgia.join(", ")%><% if @fibromyalgia_last != nil %> and <%= @fibromyalgia_last %><% end %>
 <% if @non_fibromyalgia.any? %> but no other fibromyalgia symptoms like <%= @non_fibromyalgia.join(", ")%><% if @non_fibromyalgia_last != nil %> or
 <%= @non_fibromyalgia_last %><% end %><% end %>.</p><% else %>
-<% if @non_fibromyalgia.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>has no fibromyalgia symptons like <%= @non_fibromyalgia.join(", ")%>
+<% if @non_fibromyalgia.any? %><p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>has no fibromyalgia symptoms like <%= @non_fibromyalgia.join(", ")%>
 <% if @non_fibromyalgia_last != nil %> or
 <%= @non_fibromyalgia_last %><% end %><% end %>.</p><% end %>
 
-<strong>Social History</strong>
-<p><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>is a <%= @occupation %>.
+<p></p><strong>Past medical history:</strong></p>
+<p>As above</p>
+<p></p><strong>Medication history:</strong></p>
+<p>As above</p>
+
+<p><strong>Social History:</strong></p>
+<p><% if @occupation != "" %><% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>is a <%= @occupation %>.<%end%>
 <% if @smoke != nil %>
 <% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %><%= @smoke %> <%= @smoke_detail %> cigarettes per day.
 <% else %>
@@ -66,7 +71,7 @@ has <%= @fibromyalgia.join(", ")%><% if @fibromyalgia_last != nil %> and <%= @fi
 <% end %>
 
 <% if @alcohol != nil %>
-<% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>consumes <%= @alcohol %> <%= @alcohol_detail %> per day.
+<% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>consumes <%= @alcohol %> (<%= @alcohol_detail %> per day).
 <% else %>
 <% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>does not consume alcohol.
 <% end %>
@@ -77,7 +82,7 @@ has <%= @fibromyalgia.join(", ")%><% if @fibromyalgia_last != nil %> and <%= @fi
 <% if @gender == "Male" %> He <% end %><% if @gender == "Female" %> She <% end %>does not use recreational drugs.
 <% end %></p>
 
-<strong>Family History</strong>
+<p><strong>Family History:</strong></p>
 <% if @family_full %>
 <p>There is family history of <%= @family.join(", ") %><% if @family_last != nil %> and <%= @family_last %><%end%>. <%= @family_details %></p>
 
@@ -91,7 +96,7 @@ has <%= @fibromyalgia.join(", ")%><% if @fibromyalgia_last != nil %> and <%= @fi
 
 
 
-<strong>Examination</strong>
+<p><strong>Examination:</strong></p>
 <% if @examination_full %>
 <p>There is <%= @examination.join(", ")%> and <%= @examination_last %>.
 <% elsif @examination.any? %><p>There is <%= @examination.join(", ")%><% if @examination_last != nil %> and <%= @examination_last %><% end %>
@@ -101,21 +106,67 @@ has <%= @fibromyalgia.join(", ")%><% if @fibromyalgia_last != nil %> and <%= @fi
 <%= @non_examination_last %><% end %>.</p>
 <% end %>
 
-<p><% @swelling_examination.each_with_index do |symptom, index| %>
-<% if symptom != "" && if @symptom_list.include?(symptom)%>
-There is swelling of <%= symptom %> joint
-<% if @swelling_examination[index+1] == "" %>.<% end %>
-<% elsif @swelling_examination[index-1] != "" %>
-(<%= symptom %>).
+
+<p><% if @MCP_swelling.nil? == false %>There is swelling <% if @MCP_tenderness.nil? == false %>and tenderness<% else %>but no tenderness<% end %> of MCP joints<% if @MCP_examination.empty? == false %> (<%= @MCP_examination %>).
+<% else%>.<% end %><% elsif @MCP_tenderness.nil? == false %>There is no swelling but there is tenderness of MCP joints<% if @MCP_examination.empty? == false %> (<%= @MCP_examination %>).
+<% else%>.<% end %><% elsif @MCP_swelling.nil? %>There is no swelling <% if @MCP_tenderness.nil? %>or tenderness<% end%> of MCP joints.<% if @MCP_examination.empty? == false%> <%= @MCP_examination %>.<% end%><% end %>
+
+<% if @PIP_swelling.nil? == false %>There is swelling <% if @PIP_tenderness.nil? == false %>and tenderness<% else %>but no tenderness<% end %> of PIP joints<% if @PIP_examination.empty? == false %> (<%= @PIP_examination %>).
+<% else%>.<% end %><% elsif @PIP_tenderness.nil? == false %>There is no swelling but there is tenderness of PIP joints<% if @PIP_examination.empty? == false %> (<%= @PIP_examination %>).
+<% else%>.<% end %><% elsif @PIP_swelling.nil? %>There is no swelling <% if @PIP_tenderness.nil? %>or tenderness<% end%> of PIP joints.<% if @PIP_examination.empty? == false%> <%= @PIP_examination %>.<% end %><% end %>
+
+
+<% if @DIP_swelling.nil? == false %>There is swelling <% if @DIP_tenderness.nil? == false %>and tenderness<% else %>but no tenderness<% end %> of DIP joints<% if @DIP_examination.empty? == false %> (<%= @DIP_examination %>).
+<% else%>.<% end %><% elsif @DIP_tenderness.nil? == false %>There is no swelling but there is tenderness of DIP joints<% if @DIP_examination.empty? == false %> (<%= @DIP_examination %>).
+<% else%>.<% end %><% elsif @DIP_swelling.nil?%>There is no swelling <% if @DIP_tenderness.nil? %>or tenderness<% end%> of DIP joints.<% if @DIP_examination.empty? == false%> <%= @DIP_examination %>.<% end %><% end %>
+
+
+<% if @CMC_swelling.nil? == false %>There is swelling <% if @CMC_tenderness.nil? == false %>and tenderness<% else %>but no tenderness<% end %> of 1st CMC joints<% if @CMC_examination.empty? == false %> (<%= @CMC_examination %>).
+<% else%>.<% end %><% elsif @CMC_tenderness.nil? == false %>There is no swelling but there is tenderness of 1st CMC joints<% if @CMC_examination.empty? == false %> (<%= @CMC_examination %>).
+<% else%>.<% end %><% elsif @CMC_swelling.nil? %>There is no swelling <% if @CMC_tenderness.nil? %>or tenderness<% end%> of 1st CMC joints.<% if @CMC_examination.empty? == false %> <%= @CMC_examination %>.<% end %><% end %>
+
+
+<% if @wrist_swelling.nil? == false %>There is swelling <% if @wrist_tenderness.nil? == false %>and tenderness<% else %>but no tenderness<% end %> of wrists<% if @wrist_examination.empty? == false %> (<%= @wrist_examination %>).
+<% else%>.<% end %><% elsif @wrist_tenderness.nil? == false %>There is no swelling but there is tenderness of wrists<% if @wrist_examination.empty? == false %> (<%= @wrist_examination %>).
+<% else%>.<% end %><% elsif @wrist_swelling.nil? %>There is no swelling <% if @wrist_tenderness.nil? %>or tenderness<% end%> of wrists.<% if @wrist_examination.empty? == false %> <%= @wrist_examination %>.<% end %><% end %>
+ 
+
+<% if @elbow_swelling.nil? == false %>There is swelling <% if @elbow_tenderness.nil? == false %>and tenderness<% else %>but no tenderness<% end %> of elbows<% if @elbow_examination.empty? == false %> (<%= @elbow_examination %>).
+<% else%>.<% end %><% elsif @elbow_tenderness.nil? == false %>There is no swelling but there is tenderness of elbows<% if @elbow_examination.empty? == false %> (<%= @elbow_examination %>).
+<% else%>.<% end %><% elsif @elbow_swelling.nil? %>There is no swelling <% if @elbow_tenderness.nil? %>or tenderness<% end%> of elbows.<% if @elbow_examination.empty? == false %> <%= @elbow_examination %>.<% end %><% end %>
+
+
+<% if @shoulder_swelling.nil? == false %>There is swelling <% if @shoulder_tenderness.nil? == false %>and tenderness<% else %>but no tenderness<% end %> of shoulders<% if @shoulder_examination.empty? == false %> (<%= @shoulder_examination %>).
+<% else%>.<% end %><% elsif @shoulder_tenderness.nil? == false %>There is no swelling but there is tenderness of shoulders<% if @shoulder_examination.empty? == false %> (<%= @shoulder_examination %>).
+<% else%>.<% end %><% elsif @shoulder_swelling.nil?%>There is no swelling <% if @shoulder_tenderness.nil? %>or tenderness<% end%> of shoulders.<% if @shoulder_examination.empty? == false %> <%= @shoulder_examination %>.<% end %><% end %>
+
+
+<% if @knee_swelling.nil? == false %>There is swelling <% if @knee_tenderness.nil? == false %>and tenderness<% else %>but no tenderness<% end %> of knees<% if @knee_examination.empty? == false %> (<%= @knee_examination %>).
+<% else%>.<% end %><% elsif @knee_tenderness.nil? == false %>There is no swelling but there is tenderness of knees<% if @knee_examination.empty? == false %> (<%= @knee_examination %>).
+<% else%>.<% end %><% elsif @knee_swelling.nil? %>There is no swelling <% if @knee_tenderness.nil? %>or tenderness<% end%> of knees.<% if @knee_examination.empty? == false %> <%= @knee_examination %>.<% end %><% end %>
+
+
+<% if @ankle_swelling.nil? == false %>There is swelling <% if @ankle_tenderness.nil? == false %>and tenderness<% else %>but no tenderness<% end %> of ankles<% if @ankle_examination.empty? == false %> (<%= @ankle_examination %>).
+<% else%>.<% end %><% elsif @ankle_tenderness.nil? == false %>There is no swelling but there is tenderness of ankles<% if @ankle_examination.empty? == false %> (<%= @ankle_examination %>).
+<% else%>.<% end %><% elsif @ankle_swelling.nil? %>There is no swelling <% if @ankle_tenderness.nil? %>or tenderness<% end%> of ankles.<% if @ankle_examination.empty? == false %> <%= @ankle_examination %>.<% end %><% end %>
+
+
+<% if @MTP_swelling.nil? == false %>There is swelling <% if @MTP_tenderness.nil? == false %>and tenderness<% else %>but no tenderness<% end %> of MTP joints<% if @MTP_examination.empty? == false %> (<%= @MTP_examination %>).
+<% else%>.<% end %><% elsif @MTP_tenderness.nil? == false %>There is no swelling but there is tenderness of MTP joints<% if @MTP_examination.empty? == false %> (<%= @MTP_examination %>).
+<% else%>.<% end %><% elsif @MTP_swelling.nil? %>There is no swelling <% if @MTP_tenderness.nil? %>or tenderness<% end%> of MTP joints.<% if @MTP_examination.empty? == false %> <%= @MTP_examination %>.<% end %><% end %>
+
+
+<% if @hip_examination != "" %>
+<%= @hip_examination %>.
 <% else %>
-<%= symptom %>.
-<% end %>
-<% end %>
+Hip examination is normal.
 <% end %>
 
 <% if @spine_examination != "" %>
-<%= @spine_examination %>
+<%= @spine_examination %>.
 <% else %>
-<p>Spine examination is normal.</p>
+Spine examination is normal.
 <% end %></p>
 </div>
+<br>
+<br>

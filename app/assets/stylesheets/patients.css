@@ -37,8 +37,27 @@ h1 {
   margin-right: 85%;
 }
 
-#labels_2 {
+.form-group #labels_2 {
   margin-top: 30px;
   display: inline-block;
   position: absolute;
+}
+table tr td:first-child {
+    vertical-align:middle;
+    text-align: center;
+}
+
+table tr td:nth-child(2) {
+    vertical-align:middle;
+    text-align: center;
+}
+table tr th  {
+  vertical-align: middle;
+  text-align: center;
+}
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border: none;
+}
+table tr td .checkbox-inline {
+   transform: scale(1.5);
 }
